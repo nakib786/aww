@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Check, X, Star, Calculator, Globe, FileText, Shield } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -186,13 +187,13 @@ export default function PricingPage() {
               variants={fadeInUp}
               className="flex justify-center mb-8"
             >
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-full p-1">
-                <div className="flex">
+              <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-full p-1">
+                <div className="flex relative">
                   <button
                     onClick={() => setSelectedService('taxation')}
-                    className={`px-6 py-3 text-sm font-medium transition-colors duration-200 rounded-full ${
+                    className={`relative px-6 py-3 text-sm font-medium transition-colors duration-200 rounded-full z-10 ${
                       selectedService === 'taxation'
-                        ? 'bg-gradient-to-r from-accent-primary to-accent-secondary text-white'
+                        ? 'text-white'
                         : 'text-white/70 hover:text-white/90'
                     }`}
                   >
@@ -203,9 +204,9 @@ export default function PricingPage() {
                   </button>
                   <button
                     onClick={() => setSelectedService('web-design')}
-                    className={`px-6 py-3 text-sm font-medium transition-colors duration-200 rounded-full ${
+                    className={`relative px-6 py-3 text-sm font-medium transition-colors duration-200 rounded-full z-10 ${
                       selectedService === 'web-design'
-                        ? 'bg-gradient-to-r from-accent-primary to-accent-secondary text-white'
+                        ? 'text-white'
                         : 'text-white/70 hover:text-white/90'
                     }`}
                   >
@@ -214,6 +215,21 @@ export default function PricingPage() {
                       Web Design
                     </span>
                   </button>
+                  
+                  {/* Animated background */}
+                  <motion.div
+                    className="absolute top-1 bottom-1 bg-slate-700/60 border border-slate-500/50 rounded-full"
+                    initial={false}
+                    animate={{
+                      left: selectedService === 'taxation' ? '4px' : '50%',
+                      width: selectedService === 'taxation' ? 'calc(50% - 4px)' : 'calc(50% - 4px)',
+                    }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 300,
+                      damping: 30,
+                    }}
+                  />
                 </div>
               </div>
             </motion.div>
@@ -242,14 +258,14 @@ export default function PricingPage() {
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-accent-primary to-accent-secondary text-white px-4 py-2 rounded-full text-sm font-medium">
+                    <span className="bg-slate-700/80 border border-slate-500/50 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
                       Most Popular
                     </span>
                   </div>
                 )}
 
                 <div className="text-center mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-xl flex items-center justify-center mx-auto mb-6">
+                  <div className="w-16 h-16 bg-slate-700/60 border border-slate-500/50 rounded-xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
                     <plan.icon className="h-8 w-8 text-white" />
                   </div>
                   
@@ -271,16 +287,19 @@ export default function PricingPage() {
                   ))}
                 </ul>
 
-                <Button 
-                  variant={plan.popular ? "magnetic" : "outline"} 
-                  size="lg" 
-                  className="w-full"
-                  asChild
-                >
-                  <Link href="/contact">
-                    Get Started
-                  </Link>
-                </Button>
+                {plan.popular ? (
+                  <ButtonLiquidGlass className="w-full" asChild>
+                    <Link href="/contact">
+                      Get Started
+                    </Link>
+                  </ButtonLiquidGlass>
+                ) : (
+                  <Button variant="outline" size="lg" className="w-full" asChild>
+                    <Link href="/contact">
+                      Get Started
+                    </Link>
+                  </Button>
+                )}
               </motion.div>
             ))}
           </motion.div>
@@ -347,11 +366,11 @@ export default function PricingPage() {
                 Book a free consultation to discuss your needs and get a personalized quote.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="magnetic" size="lg" asChild>
+                <ButtonLiquidGlass asChild>
                   <Link href="/contact">
                     Book Free Consultation
                   </Link>
-                </Button>
+                </ButtonLiquidGlass>
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/about">
                     Learn More About Us

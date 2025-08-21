@@ -6,8 +6,10 @@ import { ArrowRight, Check, Calculator, FileText, Globe, Zap } from 'lucide-reac
 import { AuroraCanvas, useReducedMotion } from '@/components/AuroraCanvas'
 import { ServiceSwitch, ServiceContent } from '@/components/ServiceSwitch'
 import { Button } from '@/components/ui/Button'
+import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 import { Marquee } from '@/components/Marquee'
 import { StatCounter } from '@/components/StatCounter'
+import { GlowCard } from '@/components/ui/spotlight-card'
 
 
 const fadeInUp = {
@@ -32,10 +34,110 @@ export default function Home() {
               {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
           {/* Aurora Background */}
-                      <AuroraCanvas 
-              className="absolute inset-0 z-0 opacity-50" 
-              reducedMotion={reducedMotion}
+        <AuroraCanvas 
+          className="absolute inset-0 z-0 opacity-50" 
+          reducedMotion={reducedMotion}
+        />
+        
+        {/* Additional Ribbon Elements */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {/* Top Left Ribbon */}
+          <motion.div
+            className="absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-br from-aurora-cyan/20 to-transparent rounded-full blur-xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          
+          {/* Top Right Ribbon */}
+          <motion.div
+            className="absolute -top-32 -right-16 w-32 h-32 bg-gradient-to-bl from-lime-green/20 to-transparent rounded-full blur-xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
+          
+          {/* Bottom Left Ribbon */}
+          <motion.div
+            className="absolute -bottom-24 -left-12 w-36 h-36 bg-gradient-to-tr from-magenta/20 to-transparent rounded-full blur-xl"
+            animate={{
+              scale: [1, 1.4, 1],
+              opacity: [0.25, 0.55, 0.25],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+          />
+          
+          {/* Bottom Right Ribbon */}
+          <motion.div
+            className="absolute -bottom-16 -right-24 w-28 h-28 bg-gradient-to-tl from-aurora-cyan/15 to-transparent rounded-full blur-xl"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 3.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5
+            }}
+          />
+          
+          {/* Center Top Ribbon */}
+          <motion.div
+            className="absolute top-0 left-1/2 transform -translate-x-1/2 w-48 h-48 bg-gradient-to-b from-lime-green/10 to-transparent rounded-full blur-2xl"
+            animate={{
+              scale: [1, 1.5, 1],
+              opacity: [0.1, 0.3, 0.1],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1.5
+            }}
+          />
+          
+          {/* Floating Ribbon Particles */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-gradient-to-r from-aurora-cyan to-lime-green rounded-full"
+              style={{
+                left: `${20 + i * 10}%`,
+                top: `${30 + (i % 3) * 20}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                opacity: [0.3, 0.8, 0.3],
+                scale: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 3 + i * 0.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.3
+              }}
             />
+          ))}
+        </div>
         
         <div className="container relative z-10 text-center">
           <motion.div
@@ -82,15 +184,14 @@ export default function Home() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
             >
-              <Button variant="magnetic" size="lg" asChild>
+              <ButtonLiquidGlass asChild>
                 <Link href="/contact">
                   <ServiceContent
                     taxation="Get Tax Consultation"
                     webDesign="Start Your Project"
                   />
-                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
-              </Button>
+              </ButtonLiquidGlass>
               <Button variant="outline" size="lg" asChild>
                 <ServiceContent
                   taxation={
@@ -153,65 +254,83 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <motion.div
-              variants={fadeInUp}
-              className="glass p-8 rounded-2xl text-center group hover:scale-105 transition-transform duration-300"
-            >
-              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full flex items-center justify-center">
-                <ServiceContent
-                  taxation={<FileText className="h-8 w-8 text-white" />}
-                  webDesign={<Globe className="h-8 w-8 text-white" />}
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-4">
-                <ServiceContent
-                  taxation="BC-First Tax Expertise"
-                  webDesign="Modern Craft"
-                />
-              </h3>
-              <div className="text-white/70">
-                <ServiceContent
-                  taxation="GST/PST, CRA support, and real-world small business filing expertise."
-                  webDesign="High-performance websites designed to rank and convert using modern technology."
-                />
-              </div>
+            <motion.div variants={fadeInUp}>
+              <GlowCard 
+                glowColor="purple" 
+                size="lg" 
+                className="text-center h-full flex flex-col justify-center"
+                mobileMode="breathe"
+              >
+                <div className="flex-1 flex flex-col items-center justify-center relative z-20">
+                  <div className="w-16 h-16 mb-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
+                    <ServiceContent
+                      taxation={<FileText className="h-8 w-8 text-white" />}
+                      webDesign={<Globe className="h-8 w-8 text-white" />}
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-4">
+                    <ServiceContent
+                      taxation="BC-First Tax Expertise"
+                      webDesign="Modern Craft"
+                    />
+                  </h3>
+                  <div className="text-white/70">
+                    <ServiceContent
+                      taxation="GST/PST, CRA support, and real-world small business filing expertise."
+                      webDesign="High-performance websites designed to rank and convert using modern technology."
+                    />
+                  </div>
+                </div>
+              </GlowCard>
             </motion.div>
 
-            <motion.div
-              variants={fadeInUp}
-              className="glass p-8 rounded-2xl text-center group hover:scale-105 transition-transform duration-300"
-            >
-              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full flex items-center justify-center">
-                <ServiceContent
-                  taxation={<Calculator className="h-8 w-8 text-white" />}
-                  webDesign={<Zap className="h-8 w-8 text-white" />}
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-4">
-                <ServiceContent
-                  taxation="Expert Tax Guidance"
-                  webDesign="Lightning Fast Performance"
-                />
-              </h3>
-              <div className="text-white/70">
-                <ServiceContent
-                  taxation="Professional tax advice and filing services with personalized support."
-                  webDesign="Optimized for Core Web Vitals with LCP < 2.5s and perfect Lighthouse scores."
-                />
-              </div>
+            <motion.div variants={fadeInUp}>
+              <GlowCard 
+                glowColor="blue" 
+                size="lg" 
+                className="text-center h-full flex flex-col justify-center"
+                mobileMode="rotate"
+              >
+                <div className="flex-1 flex flex-col items-center justify-center relative z-20">
+                  <div className="w-16 h-16 mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center">
+                    <ServiceContent
+                      taxation={<Calculator className="h-8 w-8 text-white" />}
+                      webDesign={<Zap className="h-8 w-8 text-white" />}
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-4">
+                    <ServiceContent
+                      taxation="Expert Tax Guidance"
+                      webDesign="Lightning Fast Performance"
+                    />
+                  </h3>
+                  <div className="text-white/70">
+                    <ServiceContent
+                      taxation="Professional tax advice and filing services with personalized support."
+                      webDesign="Optimized for Core Web Vitals with LCP < 2.5s and perfect Lighthouse scores."
+                    />
+                  </div>
+                </div>
+              </GlowCard>
             </motion.div>
 
-            <motion.div
-              variants={fadeInUp}
-              className="glass p-8 rounded-2xl text-center group hover:scale-105 transition-transform duration-300"
-            >
-              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full flex items-center justify-center">
-                <Check className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-4">One Partner</h3>
-              <div className="text-white/70">
-                Finance + web under one roof—fast feedback loops and integrated business solutions.
-              </div>
+            <motion.div variants={fadeInUp}>
+              <GlowCard 
+                glowColor="green" 
+                size="lg" 
+                className="text-center h-full flex flex-col justify-center"
+                mobileMode="pulse"
+              >
+                <div className="flex-1 flex flex-col items-center justify-center relative z-20">
+                  <div className="w-16 h-16 mb-6 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
+                    <Check className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-4">One Partner</h3>
+                  <div className="text-white/70">
+                    Finance + web under one roof—fast feedback loops and integrated business solutions.
+                  </div>
+                </div>
+              </GlowCard>
             </motion.div>
           </div>
         </div>
@@ -311,15 +430,14 @@ export default function Home() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button variant="magnetic" size="lg" asChild>
+              <ButtonLiquidGlass asChild>
                 <Link href="/contact">
                   <ServiceContent
                     taxation="Book Tax Consultation"
                     webDesign="Book Web Consultation"
                   />
-                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
-              </Button>
+              </ButtonLiquidGlass>
               <Button variant="outline" size="lg" asChild>
                 <Link href="/pricing">View Pricing</Link>
               </Button>

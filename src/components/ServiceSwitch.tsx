@@ -13,7 +13,7 @@ export function ServiceSwitch() {
   const { currentService, setService } = useServiceStore()
 
   return (
-    <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-full p-1">
+    <div className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-full p-1">
       <div className="flex relative">
         {services.map((service) => (
           <button
@@ -21,7 +21,7 @@ export function ServiceSwitch() {
             onClick={() => setService(service.id)}
             className={cn(
               'relative px-6 py-3 text-sm font-medium transition-colors duration-200 rounded-full z-10',
-              'focus:outline-none focus:ring-2 focus:ring-accent-primary/50',
+              'focus:outline-none focus:ring-2 focus:ring-white/20',
               currentService === service.id
                 ? 'text-white'
                 : 'text-white/70 hover:text-white/90'
@@ -36,7 +36,7 @@ export function ServiceSwitch() {
         
         {/* Animated background */}
         <motion.div
-          className="absolute top-1 bottom-1 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full"
+          className="absolute top-1 bottom-1 bg-slate-700/60 border border-slate-500/50 rounded-full"
           initial={false}
           animate={{
             left: currentService === 'taxation' ? '4px' : '50%',
@@ -46,9 +46,6 @@ export function ServiceSwitch() {
             type: 'spring',
             stiffness: 300,
             damping: 30,
-          }}
-          style={{
-            background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
           }}
         />
       </div>

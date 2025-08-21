@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 import { ServiceContent } from '@/components/ServiceSwitch'
 
 const contactSchema = z.object({
@@ -315,10 +316,8 @@ export default function ContactPage() {
                   )}
                 </div>
 
-                <Button
+                <ButtonLiquidGlass
                   type="submit"
-                  variant="magnetic"
-                  size="lg"
                   className="w-full"
                   disabled={isSubmitting}
                 >
@@ -330,7 +329,7 @@ export default function ContactPage() {
                       <Send className="ml-2 h-5 w-5" />
                     </>
                   )}
-                </Button>
+                </ButtonLiquidGlass>
               </form>
             </motion.div>
           </div>

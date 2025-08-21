@@ -11,10 +11,10 @@ interface AnimatedLogoProps {
 }
 
 const sizeClasses = {
-  sm: 'w-36 h-12',
-  md: 'w-52 h-18',
-  lg: 'w-72 h-24',
-  xl: 'w-96 h-32'
+  sm: 'w-28 sm:w-36 h-12',
+  md: 'w-40 sm:w-52 h-18',
+  lg: 'w-56 sm:w-72 h-24',
+  xl: 'w-72 sm:w-96 h-32'
 }
 
 export function AnimatedLogo({ 
@@ -36,14 +36,14 @@ export function AnimatedLogo({
       onAnimationComplete={onAnimationComplete}
     >
       {/* Simple Logo Content */}
-      <div className="flex items-center justify-center h-full px-4">
+      <div className="flex items-center justify-center h-full px-2 sm:px-4">
         {/* Tech Icon */}
-        <div className="mr-3">
+        <div className="mr-2 sm:mr-3">
           <svg
-            width="32"
-            height="32"
+            width="24"
+            height="24"
             viewBox="0 0 32 32"
-            className="text-white"
+            className="text-white sm:w-8 sm:h-8"
           >
             {/* Circuit board / tech icon */}
             <rect x="4" y="4" width="24" height="24" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
@@ -59,14 +59,16 @@ export function AnimatedLogo({
         </div>
 
         {/* Company Name */}
-        <div className="flex items-center space-x-2">
-          <div className="text-xl font-bold text-white">
-            Aurora
+        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
+          <div className="flex items-center space-x-1 sm:space-x-2">
+            <div className="text-lg sm:text-xl font-bold text-white">
+              Aurora
+            </div>
+            <div className="text-lg sm:text-xl font-bold text-white">
+              N&N
+            </div>
           </div>
-          <div className="text-xl font-bold text-white">
-            N&N
-          </div>
-          <div className="text-xs text-white/70 font-medium tracking-wider ml-2">
+          <div className="text-xs text-white/70 font-medium tracking-wider hidden sm:block">
             BUSINESS SOLUTIONS INC.
           </div>
         </div>

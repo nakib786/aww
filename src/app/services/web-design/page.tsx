@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Code, Globe, Zap, Smartphone, Search, Shield, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -92,7 +93,7 @@ export default function WebDesignServicesPage() {
           >
             <motion.div
               variants={fadeInUp}
-              className="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full flex items-center justify-center"
+              className="w-20 h-20 mx-auto mb-6 bg-slate-700/60 border border-slate-500/50 rounded-full flex items-center justify-center backdrop-blur-sm"
             >
               <Globe className="h-10 w-10 text-white" />
             </motion.div>
@@ -117,11 +118,11 @@ export default function WebDesignServicesPage() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button variant="magnetic" size="lg" asChild>
+              <ButtonLiquidGlass asChild>
                 <Link href="/contact">
                   Start Your Project
                 </Link>
-              </Button>
+              </ButtonLiquidGlass>
               <Button variant="outline" size="lg" asChild>
                 <Link href="/pricing">
                   View Pricing
@@ -273,11 +274,11 @@ export default function WebDesignServicesPage() {
                 Let&apos;s discuss your project and create a website that drives results for your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="magnetic" size="lg" asChild>
+                <ButtonLiquidGlass asChild>
                   <Link href="/contact">
                     Start Your Project
                   </Link>
-                </Button>
+                </ButtonLiquidGlass>
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/about">
                     Learn More About Us

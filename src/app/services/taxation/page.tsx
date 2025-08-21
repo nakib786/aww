@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Calculator, FileText, Shield, Users, TrendingUp, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 import { ServiceContent } from '@/components/ServiceSwitch'
 
 const fadeInUp = {
@@ -70,7 +71,7 @@ export default function TaxationServicesPage() {
           >
             <motion.div
               variants={fadeInUp}
-              className="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full flex items-center justify-center"
+              className="w-20 h-20 mx-auto mb-6 bg-slate-700/60 border border-slate-500/50 rounded-full flex items-center justify-center backdrop-blur-sm"
             >
               <FileText className="h-10 w-10 text-white" />
             </motion.div>
@@ -95,11 +96,11 @@ export default function TaxationServicesPage() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button variant="magnetic" size="lg" asChild>
+              <ButtonLiquidGlass asChild>
                 <Link href="/contact">
                   Book Free Consultation
                 </Link>
-              </Button>
+              </ButtonLiquidGlass>
               <Button variant="outline" size="lg" asChild>
                 <Link href="/pricing">
                   View Pricing
@@ -209,11 +210,11 @@ export default function TaxationServicesPage() {
                 Book a free consultation to discuss your tax needs and get a personalized quote.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="magnetic" size="lg" asChild>
+                <ButtonLiquidGlass asChild>
                   <Link href="/contact">
                     Book Free Consultation
                   </Link>
-                </Button>
+                </ButtonLiquidGlass>
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/about">
                     Learn More About Us

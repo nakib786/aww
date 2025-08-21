@@ -49,8 +49,8 @@ export function Header() {
         animate={{ y: shouldHideHeader ? -100 : 0 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       >
-        <div className="container">
-          <div className="flex items-center justify-between h-20">
+        <div className="container px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center">
               {scrollY > 50 ? (

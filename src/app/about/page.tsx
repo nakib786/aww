@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Users, Target, Award, Shield, Heart, Zap, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 import { LogoShowcase } from '@/components/LogoShowcase'
 
 const fadeInUp = {
@@ -315,11 +316,11 @@ export default function AboutPage() {
                 Let&apos;s discuss your project and see how we can help you achieve your goals.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="magnetic" size="lg" asChild>
+                <ButtonLiquidGlass asChild>
                   <Link href="/contact">
                     Get Started
                   </Link>
-                </Button>
+                </ButtonLiquidGlass>
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/services/taxation">
                     Our Services
