@@ -6,8 +6,8 @@
 
 :root {
   /* Base colors */
-  --deep-space: #0B1020;
-  --ink-black: #070A12;
+  --deep-space: #000000;
+  --ink-black: #000000;
   --aurora-cyan: #3BF0E5;
   --lime-green: #A6FF9A;
   --magenta: #FF5CA8;
@@ -159,18 +159,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-padding {
-  padding: 80px 0;
+  padding: 40px 0;
 }
 
 @media (min-width: 768px) {
   .section-padding {
-    padding: 120px 0;
+    padding: 60px 0;
   }
 }
 
 @media (min-width: 1024px) {
   .section-padding {
-    padding: 160px 0;
+    padding: 80px 0;
   }
 }
 

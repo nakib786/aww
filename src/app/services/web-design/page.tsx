@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Code, Globe, Zap, Smartphone, Search, Shield, CheckCircle } from 'lucide-react'
+import { Code, Globe, Smartphone, Search, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 
@@ -143,7 +143,7 @@ export default function WebDesignServicesPage() {
             variants={staggerChildren}
             className="grid md:grid-cols-2 gap-8 mb-16"
           >
-            {services.map((service, index) => (
+            {services.map((service) => (
               <motion.div
                 key={service.title}
                 variants={fadeInUp}
@@ -195,7 +195,7 @@ export default function WebDesignServicesPage() {
             variants={staggerChildren}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            {process.map((step, index) => (
+            {process.map((step) => (
               <motion.div
                 key={step.step}
                 variants={fadeInUp}
@@ -237,7 +237,7 @@ export default function WebDesignServicesPage() {
             variants={staggerChildren}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {benefits.map((benefit, index) => (
+            {benefits.map((benefit) => (
               <motion.div
                 key={benefit}
                 variants={fadeInUp}

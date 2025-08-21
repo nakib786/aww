@@ -1,11 +1,14 @@
 'use client'
 
+import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Users, Target, Award, Shield, Heart, Zap, CheckCircle } from 'lucide-react'
+import { Target, Shield, Heart, CheckCircle, Zap, Calculator, Globe, Users, Award } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
-import { LogoShowcase } from '@/components/LogoShowcase'
+
+import { GlowEffect } from '@/components/ui/glow-effect'
+import { GlowCard } from '@/components/ui/spotlight-card'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -46,18 +49,22 @@ const values = [
 
 const team = [
   {
-    name: 'Sarah Chen',
-    role: 'Founder & Tax Specialist',
-    bio: 'Certified tax professional with 8+ years of experience in Canadian taxation, specializing in small business and personal tax optimization.',
-    credentials: ['CPA, CGA', 'BC Tax Specialist', 'CRA Liaison'],
-    image: '/api/og?title=Sarah%20Chen&description=Founder%20%26%20Tax%20Specialist'
+    name: 'Nidhi Arora',
+    role: 'Financial Management & Tax Specialist',
+    bio: 'Experienced financial management professional with a strong track record in Canadian taxation and accounting. Specialized in financial management, audit, and assurance with expertise in Canadian securities and investment funds. Certified with multiple professional qualifications including CPA preparation and strategic planning.',
+    credentials: ['CPA Preparation', 'Strategic Planning', 'Excel for Accountants', 'Investment Funds Canada', 'Audit & Assurance'],
+    initials: 'NA',
+    location: 'Kamloops, British Columbia',
+    experience: '8+ years in financial management and accounting'
   },
   {
-    name: 'Michael Rodriguez',
-    role: 'Lead Web Developer',
-            bio: 'Full-stack developer with expertise in modern web technologies and frameworks. Passionate about creating high-performance, user-friendly websites.',
-        credentials: ['Web Development Expert', 'React Specialist', 'SEO Certified'],
-    image: '/api/og?title=Michael%20Rodriguez&description=Lead%20Web%20Developer'
+    name: 'Nakib Shaikh',
+    role: 'Web Development & Technology Lead',
+    bio: 'Full-stack developer and technology specialist with expertise in modern web technologies, React, and creating high-performance, user-friendly websites. Passionate about innovative web solutions and digital transformation.',
+    credentials: ['Full-Stack Development', 'React Specialist', 'Web Technologies', 'Digital Solutions'],
+    initials: 'NS',
+    location: 'Vancouver, British Columbia',
+    experience: '5+ years in web development and technology'
   }
 ]
 
@@ -85,10 +92,33 @@ const methodology = [
 ]
 
 const stats = [
-  { label: 'Years Experience', value: '8+' },
+  { label: 'Years Combined Experience', value: '13+' },
   { label: 'Clients Served', value: '500+' },
   { label: 'Tax Returns Filed', value: '2000+' },
   { label: 'Websites Built', value: '100+' }
+]
+
+const services = [
+  {
+    icon: Calculator,
+    title: 'Tax Services',
+    description: 'Comprehensive Canadian tax preparation, planning, and optimization for individuals and businesses.'
+  },
+  {
+    icon: Globe,
+    title: 'Web Development',
+    description: 'Modern, responsive websites and web applications built with cutting-edge technologies.'
+  },
+  {
+    icon: Users,
+    title: 'Financial Consulting',
+    description: 'Strategic financial planning and management services to help your business grow.'
+  },
+  {
+    icon: Award,
+    title: 'Professional Excellence',
+    description: 'Certified professionals with proven track records in their respective fields.'
+  }
 ]
 
 export default function AboutPage() {
@@ -115,8 +145,8 @@ export default function AboutPage() {
               variants={fadeInUp}
               className="text-xl text-white/80 max-w-3xl mx-auto mb-8"
             >
-              We&apos;re a Vancouver-based team of tax professionals and web developers, 
-              dedicated to helping Canadian businesses thrive through expert tax services and modern web solutions.
+              We&apos;re a British Columbia-based team of financial professionals and web developers, 
+              dedicated to helping Canadian businesses thrive through expert tax services, financial management, and modern web solutions.
             </motion.p>
           </motion.div>
         </div>
@@ -132,7 +162,7 @@ export default function AboutPage() {
             variants={staggerChildren}
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <motion.div
                 key={stat.label}
                 variants={fadeInUp}
@@ -148,8 +178,57 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Services Overview */}
       <section className="section-padding bg-gradient-to-b from-ink-black to-deep-space">
+        <div className="container">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerChildren}
+            className="text-center mb-16"
+          >
+            <motion.h2 
+              variants={fadeInUp}
+              className="text-3xl md:text-5xl font-bold mb-6"
+            >
+              Our <span className="text-gradient">Services</span>
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerChildren}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                variants={fadeInUp}
+                className="text-center"
+              >
+                <GlowCard 
+                  glowColor={index % 2 === 0 ? 'blue' : 'purple'}
+                  size="md"
+                  customSize={true}
+                  className="w-full h-auto p-6"
+                >
+                  <div className="w-16 h-16 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-xl flex items-center justify-center mx-auto mb-6">
+                    <service.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-white">{service.title}</h3>
+                  <p className="text-white/70">{service.description}</p>
+                </GlowCard>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="section-padding">
         <div className="container">
           <motion.div
             initial="initial"
@@ -179,11 +258,18 @@ export default function AboutPage() {
                 variants={fadeInUp}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-xl flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">{value.title}</h3>
-                <p className="text-white/70">{value.description}</p>
+                <GlowCard 
+                  glowColor={index === 0 ? 'green' : index === 1 ? 'blue' : index === 2 ? 'purple' : 'orange'}
+                  size="md"
+                  customSize={true}
+                  className="w-full h-auto p-6"
+                >
+                  <div className="w-16 h-16 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-xl flex items-center justify-center mx-auto mb-6">
+                    <value.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-white">{value.title}</h3>
+                  <p className="text-white/70">{value.description}</p>
+                </GlowCard>
               </motion.div>
             ))}
           </motion.div>
@@ -219,34 +305,49 @@ export default function AboutPage() {
               <motion.div
                 key={member.name}
                 variants={fadeInUp}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8"
+                className="text-center"
               >
-                <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-                  <div className="w-32 h-32 bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20 rounded-full overflow-hidden flex-shrink-0">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  
-                  <div className="text-center md:text-left">
-                    <h3 className="text-2xl font-bold mb-2 text-white">{member.name}</h3>
-                    <p className="text-accent-primary mb-4">{member.role}</p>
-                    <p className="text-white/70 mb-6">{member.bio}</p>
-                    
-                    <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                      {member.credentials.map((credential) => (
-                        <span
-                          key={credential}
-                          className="px-3 py-1 bg-accent-primary/20 text-accent-primary text-sm rounded-full"
-                        >
-                          {credential}
+                <GlowCard 
+                  glowColor={index === 0 ? 'purple' : 'blue'}
+                  size="lg"
+                  customSize={true}
+                  className="w-full h-auto p-8"
+                >
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                    <div className="relative w-32 h-32 rounded-full overflow-hidden flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                      {/* Glow behind initials */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/40 to-accent-secondary/40 rounded-full blur-lg group-hover:blur-xl transition-all duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20 rounded-full" />
+                      <div className="relative w-full h-full bg-white rounded-full flex items-center justify-center border-2 border-gray-300">
+                        <span className="text-black text-3xl font-bold tracking-wider">
+                          {member.initials}
                         </span>
-                      ))}
+                      </div>
+                    </div>
+                    
+                    <div className="text-center md:text-left">
+                      <h3 className="text-2xl font-bold mb-2 text-white">{member.name}</h3>
+                      <p className="text-accent-primary mb-2">{member.role}</p>
+                      <p className="text-white/60 text-sm mb-3">{member.location}</p>
+                      <p className="text-white/70 mb-4">{member.bio}</p>
+                      
+                      <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
+                        {member.credentials.map((credential) => (
+                          <span
+                            key={credential}
+                            className="px-3 py-1 bg-accent-primary/20 text-accent-primary text-sm rounded-full"
+                          >
+                            {credential}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      <p className="text-accent-secondary text-sm font-medium">
+                        {member.experience}
+                      </p>
                     </div>
                   </div>
-                </div>
+                </GlowCard>
               </motion.div>
             ))}
           </motion.div>
@@ -284,11 +385,18 @@ export default function AboutPage() {
                 variants={fadeInUp}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white font-bold text-xl">{step.step}</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">{step.title}</h3>
-                <p className="text-white/70">{step.description}</p>
+                <GlowCard 
+                  glowColor={index === 0 ? 'blue' : index === 1 ? 'purple' : index === 2 ? 'green' : 'orange'}
+                  size="md"
+                  customSize={true}
+                  className="w-full h-auto p-6"
+                >
+                  <div className="w-16 h-16 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-white font-bold text-xl">{step.step}</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-white">{step.title}</h3>
+                  <p className="text-white/70">{step.description}</p>
+                </GlowCard>
               </motion.div>
             ))}
           </motion.div>
@@ -332,8 +440,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Logo Showcase */}
-      <LogoShowcase />
     </div>
   )
 }

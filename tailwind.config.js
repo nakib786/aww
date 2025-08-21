@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'deep-space': '#0B1020',
-        'ink-black': '#070A12',
+        'deep-space': '#000000',
+        'ink-black': '#000000',
         'aurora-cyan': '#3BF0E5',
         'lime-green': '#A6FF9A',
         'magenta': '#FF5CA8',
@@ -21,6 +21,7 @@ module.exports = {
       fontFamily: {
         'space-grotesk': ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
         'inter': ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        'handwritten': ['var(--font-caveat)', 'cursive'],
       },
       container: {
         center: true,

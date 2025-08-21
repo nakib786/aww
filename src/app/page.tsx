@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Check, Calculator, FileText, Globe, Zap } from 'lucide-react'
+import { Check, Calculator, FileText, Globe, Zap } from 'lucide-react'
 import { AuroraCanvas, useReducedMotion } from '@/components/AuroraCanvas'
 import { ServiceSwitch, ServiceContent } from '@/components/ServiceSwitch'
 import { Button } from '@/components/ui/Button'

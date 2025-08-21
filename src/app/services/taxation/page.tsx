@@ -2,10 +2,10 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Calculator, FileText, Shield, Users, TrendingUp, CheckCircle } from 'lucide-react'
+import { Calculator, FileText, Shield, Users, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
-import { ServiceContent } from '@/components/ServiceSwitch'
+
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -121,7 +121,7 @@ export default function TaxationServicesPage() {
             variants={staggerChildren}
             className="grid md:grid-cols-2 gap-8 mb-16"
           >
-            {services.map((service, index) => (
+            {services.map((service) => (
               <motion.div
                 key={service.title}
                 variants={fadeInUp}
@@ -173,7 +173,7 @@ export default function TaxationServicesPage() {
             variants={staggerChildren}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {benefits.map((benefit, index) => (
+            {benefits.map((benefit) => (
               <motion.div
                 key={benefit}
                 variants={fadeInUp}

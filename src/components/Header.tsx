@@ -6,13 +6,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { ServiceSwitch } from './ServiceSwitch'
 import { Button } from './ui/Button'
+import { MagnetizeButton } from './ui/magnetize-button'
 import { AnimatedLogo, LogoMark } from './AnimatedLogo'
 import { useScrollStore } from '@/lib/store'
 import { cn } from '@/lib/utils'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services/taxation' },
+  { name: 'Services', href: '/services' },
   { name: 'Pricing', href: '/pricing' },
   { name: 'About', href: '/about' },
 ]
@@ -81,9 +82,9 @@ export function Header() {
             {/* Service Switch & CTA */}
             <div className="hidden lg:flex items-center space-x-4">
               <ServiceSwitch />
-              <Button variant="magnetic" asChild>
+              <MagnetizeButton asChild>
                 <Link href="/contact">Book Consult</Link>
-              </Button>
+              </MagnetizeButton>
             </div>
 
             {/* Mobile Menu Button */}
@@ -146,11 +147,11 @@ export function Header() {
 
               <div className="mt-auto space-y-6">
                 <ServiceSwitch />
-                <Button variant="magnetic" className="w-full" asChild>
+                <MagnetizeButton className="w-full" asChild>
                   <Link href="/contact" onClick={() => setIsOpen(false)}>
                     Book Consult
                   </Link>
-                </Button>
+                </MagnetizeButton>
               </div>
             </motion.div>
           </motion.div>

@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react'
-import { Button } from '@/components/ui/Button'
 import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 import { ServiceContent } from '@/components/ServiceSwitch'
 
@@ -100,8 +99,8 @@ export default function ContactPage() {
               className="text-xl text-white/80 max-w-3xl mx-auto"
             >
               <ServiceContent
-                taxation="Ready to simplify your taxes or launch your dream website? Get in touch for a free consultation."
-                webDesign="Ready to launch your dream website or simplify your taxes? Get in touch for a free consultation."
+                taxation="Ready to simplify your taxes? Get in touch for a free consultation."
+                webDesign="Ready to launch your dream website? Get in touch for a free consultation."
               />
             </motion.p>
           </motion.div>

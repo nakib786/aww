@@ -1,5 +1,4 @@
 import { ButtonLiquidGlass } from "@/components/ui/button-colorful"
-import { Button } from "@/components/ui/Button"
 
 function ButtonDemo() {
     return (
