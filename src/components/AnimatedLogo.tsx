@@ -6,7 +6,6 @@ import { cn } from '@/lib/utils'
 interface AnimatedLogoProps {
   className?: string
   size?: 'sm' | 'md' | 'lg' | 'xl'
-  autoPlay?: boolean
   onAnimationComplete?: () => void
 }
 
@@ -20,7 +19,6 @@ const sizeClasses = {
 export function AnimatedLogo({ 
   className = '', 
   size = 'md', 
-  autoPlay = true,
   onAnimationComplete 
 }: AnimatedLogoProps) {
   return (

@@ -9,7 +9,6 @@ import { Slot } from "@radix-ui/react-slot";
 
 interface MagnetizeButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     particleCount?: number;
-    attractRadius?: number;
     children?: React.ReactNode;
     asChild?: boolean;
 }
@@ -23,7 +22,6 @@ interface Particle {
 function MagnetizeButton({
     className,
     particleCount = 8,
-    attractRadius = 50,
     children = "Book Consult",
     asChild = false,
     ...props

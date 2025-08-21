@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/Button";
-import { Check, Pencil, Star, Sparkles } from "lucide-react";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PricingTier {
@@ -172,4 +172,5 @@ function CreativePricing({
     );
 }
 
-export { CreativePricing, PricingTier }
+export { CreativePricing }
+export type { PricingTier }

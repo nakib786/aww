@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Clock, Linkedin, Twitter } from 'lucide-react'
+import { Mail, Phone, MapPin, Linkedin, Twitter } from 'lucide-react'
 import { ServiceContent } from './ServiceSwitch'
 
 const footerLinks = {

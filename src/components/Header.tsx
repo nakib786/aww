@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { ServiceSwitch } from './ServiceSwitch'
-import { Button } from './ui/Button'
+
 import { MagnetizeButton } from './ui/magnetize-button'
 import { AnimatedLogo, LogoMark } from './AnimatedLogo'
 import { useScrollStore } from '@/lib/store'
@@ -59,7 +59,6 @@ export function Header() {
               ) : (
                 <AnimatedLogo 
                   size="sm" 
-                  autoPlay={false}
                   className="transition-all duration-300" 
                 />
               )}

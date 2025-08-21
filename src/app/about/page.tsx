@@ -3,11 +3,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Target, Shield, Heart, CheckCircle, Zap, Calculator, Globe, Users, Award } from 'lucide-react'
+import { Target, Shield, Heart, Zap, Calculator, Globe, Users, Award } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 
-import { GlowEffect } from '@/components/ui/glow-effect'
+
 import { GlowCard } from '@/components/ui/spotlight-card'
 
 const fadeInUp = {

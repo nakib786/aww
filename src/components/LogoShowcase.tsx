@@ -67,9 +67,8 @@ export function LogoShowcase() {
                   {selectedVariant === 'mark' ? (
                     <LogoMark size={120} className="text-aurora-cyan" />
                   ) : (
-                    <AnimatedLogo 
+                                        <AnimatedLogo
                       size={logoVariants.find(v => v.id === selectedVariant)?.size || 'lg'}
-                      autoPlay={true}
                     />
                   )}
                 </div>

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Check, Calculator, Globe, FileText, Shield } from 'lucide-react'
+import { Calculator, Globe, FileText, Shield } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 import { CreativePricing } from '@/components/ui/creative-pricing'

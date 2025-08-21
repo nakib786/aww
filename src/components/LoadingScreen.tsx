@@ -11,11 +11,9 @@ interface LoadingScreenProps {
 
 export function LoadingScreen({ isLoading, onComplete }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0)
-  const [showLogo, setShowLogo] = useState(false)
 
   useEffect(() => {
     if (isLoading) {
-      setShowLogo(true)
       
       // Simulate loading progress
       const interval = setInterval(() => {
@@ -120,7 +118,6 @@ export function LoadingScreen({ isLoading, onComplete }: LoadingScreenProps) {
             >
               <AnimatedLogo 
                 size="xl" 
-                autoPlay={showLogo}
                 className="transform hover:scale-105 transition-transform duration-300"
               />
             </motion.div>

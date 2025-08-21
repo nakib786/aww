@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { FileText, Globe, Calculator, Code, Shield, Search, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { MagnetizeButton } from '@/components/ui/magnetize-button'
-import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
+
 import { ServiceSwitch } from '@/components/ServiceSwitch'
 import { useServiceStore } from '@/lib/store'
 import { useEffect, useState } from 'react'
@@ -111,7 +111,6 @@ export default function ServicesPage() {
   }
 
   const isTaxation = currentService === 'taxation'
-  const isWebDesign = currentService === 'web-design'
 
   const currentServices = isTaxation ? taxationServices : webDesignServices
   const currentBenefits = isTaxation ? taxationBenefits : webDesignBenefits
