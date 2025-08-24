@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { getCurrentUser, signOut } from '@/lib/firebase-utils'
 import { Button } from '@/components/ui/Button'
-import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 import { GlowCard } from '@/components/ui/spotlight-card'
 import { 
   Shield, 
@@ -13,6 +12,7 @@ import {
   DollarSign
 } from 'lucide-react'
 import Link from 'next/link'
+import { User } from 'firebase/auth'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -29,7 +29,7 @@ const staggerChildren = {
 }
 
 export default function AdminDashboardPage() {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
 

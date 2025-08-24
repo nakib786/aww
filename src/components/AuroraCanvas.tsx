@@ -98,7 +98,7 @@ export function AuroraCanvas({ className = '', reducedMotion = false }: AuroraCa
       window.removeEventListener('resize', resizeCanvas)
       window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [reducedMotion])
+  }, [reducedMotion, mousePosition.x])
 
   if (reducedMotion) {
     return (

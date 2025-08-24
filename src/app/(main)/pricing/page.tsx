@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Calculator, Globe, FileText, Shield, DollarSign } from 'lucide-react'
+import { Calculator, Globe, FileText, Shield, DollarSign, Monitor } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 import { CreativePricing } from '@/components/ui/creative-pricing'
@@ -26,7 +26,15 @@ const staggerChildren = {
 }
 
 // Convert Firestore pricing data to CreativePricing format
-const convertToCreativePricingFormat = (firestoreTiers: any[]): PricingTier[] => {
+const convertToCreativePricingFormat = (firestoreTiers: Array<{
+  name: string
+  icon: string
+  price: number
+  description: string
+  color: string
+  features: string[]
+  popular?: boolean
+}>): PricingTier[] => {
   return firestoreTiers.map(tier => ({
     name: tier.name,
     icon: getIconComponent(tier.icon),

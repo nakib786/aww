@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { signIn } from '@/lib/firebase-utils'
 import { AuthProvider, useAuth } from '@/lib/auth-context'
-import { Button } from '@/components/ui/Button'
 import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 import { Eye, EyeOff, Mail, Lock, Shield, AlertCircle } from 'lucide-react'
 
@@ -53,6 +52,7 @@ function AdminLoginContent() {
         router.push('/admin/dashboard')
       }
     } catch (err) {
+      console.error('Login error:', err)
       setError('An error occurred. Please try again.')
     } finally {
       setIsLoading(false)

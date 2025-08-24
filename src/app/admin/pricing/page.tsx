@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { getCurrentUser, signOut, getPricingTiers, updatePricingTier, deletePricingTier, PricingTier } from '@/lib/firebase-utils'
@@ -23,6 +23,7 @@ import {
   RefreshCw
 } from 'lucide-react'
 import Link from 'next/link'
+import { User } from 'firebase/auth'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -56,7 +57,7 @@ const getIconComponent = (iconName: string) => {
 }
 
 export default function AdminPricingPage() {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [pricingTiers, setPricingTiers] = useState<PricingTier[]>([])
   const [editingTier, setEditingTier] = useState<string | null>(null)
@@ -68,22 +69,7 @@ export default function AdminPricingPage() {
   const [isRefreshing, setIsRefreshing] = useState(false)
   const router = useRouter()
 
-  useEffect(() => {
-    const currentUser = getCurrentUser()
-    if (!currentUser) {
-      router.push('/admin/login')
-      return
-    }
-
-    setUser(currentUser)
-    setIsLoading(false)
-  }, [router])
-
-  useEffect(() => {
-    fetchPricingTiers()
-  }, [activeTab])
-
-  const fetchPricingTiers = async () => {
+  const fetchPricingTiers = useCallback(async () => {
     setIsRefreshing(true)
     try {
       console.log('Fetching pricing tiers for:', activeTab)
@@ -99,7 +85,22 @@ export default function AdminPricingPage() {
     } finally {
       setIsRefreshing(false)
     }
-  }
+  }, [activeTab])
+
+  useEffect(() => {
+    const currentUser = getCurrentUser()
+    if (!currentUser) {
+      router.push('/admin/login')
+      return
+    }
+
+    setUser(currentUser)
+    setIsLoading(false)
+  }, [router])
+
+  useEffect(() => {
+    fetchPricingTiers()
+  }, [fetchPricingTiers])
 
   const handleSignOut = async () => {
     try {

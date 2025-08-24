@@ -161,7 +161,7 @@ export const getDocumentsWhere = async <T>(
   collectionName: string,
   field: string,
   operator: '==' | '!=' | '<' | '<=' | '>' | '>=',
-  value: any
+  value: string | number | boolean
 ) => {
   return getDocuments<T>(collectionName, [where(field, operator, value)])
 }
