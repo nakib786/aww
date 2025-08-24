@@ -72,9 +72,7 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${caveat.variable}`} suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
         <Providers>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
+          {children}
           <Analytics />
           <SpeedInsights />
         </Providers>

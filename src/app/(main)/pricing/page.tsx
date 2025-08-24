@@ -1,14 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Calculator, Globe, FileText, Shield } from 'lucide-react'
+import { Calculator, Globe, FileText, Shield, DollarSign } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { ButtonLiquidGlass } from '@/components/ui/button-colorful'
 import { CreativePricing } from '@/components/ui/creative-pricing'
 import type { PricingTier } from '@/components/ui/creative-pricing'
 import { GlowCard } from '@/components/ui/spotlight-card'
+import { getPricingTiers } from '@/lib/firebase-utils'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -21,6 +22,36 @@ const staggerChildren = {
     transition: {
       staggerChildren: 0.1
     }
+  }
+}
+
+// Convert Firestore pricing data to CreativePricing format
+const convertToCreativePricingFormat = (firestoreTiers: any[]): PricingTier[] => {
+  return firestoreTiers.map(tier => ({
+    name: tier.name,
+    icon: getIconComponent(tier.icon),
+    price: tier.price,
+    description: tier.description,
+    color: tier.color,
+    features: tier.features,
+    popular: tier.popular || false
+  }))
+}
+
+const getIconComponent = (iconName: string) => {
+  switch (iconName) {
+    case 'FileText':
+      return <FileText className="w-6 h-6" />
+    case 'Calculator':
+      return <Calculator className="w-6 h-6" />
+    case 'Shield':
+      return <Shield className="w-6 h-6" />
+    case 'Globe':
+      return <Globe className="w-6 h-6" />
+    case 'Monitor':
+      return <Monitor className="w-6 h-6" />
+    default:
+      return <DollarSign className="w-6 h-6" />
   }
 }
 
@@ -141,8 +172,43 @@ const faqs = [
 
 export default function PricingPage() {
   const [selectedService, setSelectedService] = useState<'taxation' | 'web-design'>('taxation')
+  const [taxationTiers, setTaxationTiers] = useState<PricingTier[]>([])
+  const [webDesignTiers, setWebDesignTiers] = useState<PricingTier[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  
+  // Fetch pricing data from Firestore
+  useEffect(() => {
+    const fetchPricingData = async () => {
+      setIsLoading(true)
+      try {
+        // Fetch taxation tiers
+        const taxationResult = await getPricingTiers('taxation')
+        if (taxationResult.data) {
+          setTaxationTiers(convertToCreativePricingFormat(taxationResult.data))
+        }
+
+        // Fetch web design tiers
+        const webDesignResult = await getPricingTiers('web-design')
+        if (webDesignResult.data) {
+          setWebDesignTiers(convertToCreativePricingFormat(webDesignResult.data))
+        }
+      } catch (error) {
+        console.error('Error fetching pricing data:', error)
+        // Fallback to hardcoded data if Firestore fails
+        setTaxationTiers(creativeTaxationTiers)
+        setWebDesignTiers(creativeWebDesignTiers)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchPricingData()
+  }, [])
+
+  // Use Firestore data if available, otherwise fallback to hardcoded data
+  const currentTiers = selectedService === 'taxation' 
+    ? (taxationTiers.length > 0 ? taxationTiers : creativeTaxationTiers)
+    : (webDesignTiers.length > 0 ? webDesignTiers : creativeWebDesignTiers)
 
   return (
     <div className="pt-20">
@@ -229,12 +295,19 @@ export default function PricingPage() {
       {/* Creative Pricing Section */}
       <section className="section-padding">
         <div className="container">
-          <CreativePricing 
-            tag={selectedService === 'taxation' ? "Taxation Services" : "Web Design Services"}
-            title={selectedService === 'taxation' ? "Professional Tax Solutions" : "Modern Web Solutions"}
-            description={selectedService === 'taxation' ? "Expert tax services for individuals and businesses across Canada" : "Cutting-edge websites that drive results for your business"}
-            tiers={selectedService === 'taxation' ? creativeTaxationTiers : creativeWebDesignTiers}
-          />
+          {isLoading ? (
+            <div className="text-center py-12">
+              <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-white/70">Loading pricing information...</p>
+            </div>
+          ) : (
+            <CreativePricing 
+              tag={selectedService === 'taxation' ? "Taxation Services" : "Web Design Services"}
+              title={selectedService === 'taxation' ? "Professional Tax Solutions" : "Modern Web Solutions"}
+              description={selectedService === 'taxation' ? "Expert tax services for individuals and businesses across Canada" : "Cutting-edge websites that drive results for your business"}
+              tiers={currentTiers}
+            />
+          )}
         </div>
       </section>
 

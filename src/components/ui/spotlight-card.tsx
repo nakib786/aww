@@ -4,7 +4,7 @@ import { GlowEffect } from './glow-effect';
 interface GlowCardProps {
   children: ReactNode;
   className?: string;
-  glowColor?: 'blue' | 'purple' | 'green' | 'red' | 'orange';
+  glowColor?: 'blue' | 'purple' | 'green' | 'red' | 'orange' | 'cyan';
   size?: 'sm' | 'md' | 'lg';
   width?: string | number;
   height?: string | number;
@@ -17,7 +17,8 @@ const glowColorMap = {
   purple: { base: 280, spread: 300 },
   green: { base: 120, spread: 200 },
   red: { base: 0, spread: 200 },
-  orange: { base: 30, spread: 200 }
+  orange: { base: 30, spread: 200 },
+  cyan: { base: 180, spread: 200 }
 };
 
 const mobileColorMap = {
@@ -25,7 +26,8 @@ const mobileColorMap = {
   purple: ['#C959DD', '#E91E63', '#9C27B0', '#673AB7'],
   green: ['#4CAF50', '#8BC34A', '#CDDC39', '#00BCD4'],
   red: ['#FF5722', '#F44336', '#E91E63', '#FF9800'],
-  orange: ['#FF9800', '#FF5722', '#FFC107', '#FFEB3B']
+  orange: ['#FF9800', '#FF5722', '#FFC107', '#FFEB3B'],
+  cyan: ['#00BCD4', '#26C6DA', '#4DD0E1', '#80DEEA']
 };
 
 const sizeMap = {

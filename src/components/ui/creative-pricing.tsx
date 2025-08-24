@@ -109,7 +109,7 @@ function CreativePricing({
                                     ${tier.price}
                                 </span>
                                 <span className="text-white/60">
-                                    /month
+                                    flat rate
                                 </span>
                             </div>
 

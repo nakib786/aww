@@ -1,0 +1,29 @@
+# Cursor Rules for Aurora N&N Business Solutions
+
+## Project Overview
+This is a Next.js website for Aurora N&N Business Solutions Inc., providing professional taxation services and modern web design.
+
+## Firebase MCP Server Configuration
+The Firebase MCP server is configured to provide AI assistance with Firebase development tasks.
+
+## Code Style Guidelines
+- Use TypeScript for all new code
+- Follow Next.js 15+ best practices
+- Use Tailwind CSS for styling
+- Implement proper error handling
+- Use Firebase for backend services
+
+## Firebase Integration
+- Authentication: Firebase Auth
+- Database: Firestore
+- Storage: Firebase Storage
+- Use the utility functions in `src/lib/firebase-utils.ts`
+
+## File Structure
+- Components in `src/components/`
+- Pages in `src/app/`
+- Utilities in `src/lib/`
+- Firebase config in `src/lib/firebase.ts`
+
+## Environment Variables
+Required Firebase environment variables are defined in `env.example`
